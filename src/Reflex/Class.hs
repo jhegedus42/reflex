@@ -52,7 +52,7 @@ class (MonadHold t (PushM t), MonadSample t (PullM t), Functor (Event t), Functo
   coincidence :: Event t (Event t a) -> Event t a
 
 class Monad m => MonadSample t m | m -> t where
-  -- | Get the current value in the Behavior
+  -- | Get the current value in the Behavior, a sampled value never updates. However you can sample multiple times at different points in time.
   sample :: Behavior t a -> m a
 
 class MonadSample t m => MonadHold t m where
